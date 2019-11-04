@@ -10,10 +10,11 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private AudioClip coinSound;
     
 
     private Rigidbody rig;
-
+    private AudioSource audioSource;
     
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rig = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Move()
@@ -83,6 +85,7 @@ public class PlayerController : MonoBehaviour
         
         if (other.tag == "Coin")
         {
+            audioSource.PlayOneShot(coinSound);
             Destroy(other.gameObject);
             //Add Score
         }
