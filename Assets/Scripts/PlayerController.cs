@@ -80,5 +80,11 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+        
+        if (other.tag == "Coin")
+        {
+            Destroy(other.gameObject);
+            //Add Score
+        }
     }
 }

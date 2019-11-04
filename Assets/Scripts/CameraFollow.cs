@@ -23,8 +23,5 @@ public class CameraFollow : MonoBehaviour
         }
 
         transform.position = target.position + offset;
-        
-        
-
     }
 }
