@@ -57,9 +57,17 @@ public class PlayerController : MonoBehaviour
 
     void TryJump()
     {
-        Ray ray = new Ray(transform.position, Vector3.down);
+        Ray ray1 = new Ray(transform.position + new Vector3(0.5f, 0, 0.5f), Vector3.down);
+        Ray ray2 = new Ray(transform.position + new Vector3(-0.5f, 0, 0.5f), Vector3.down);
+        Ray ray3 = new Ray(transform.position + new Vector3(0.5f, 0, -0.5f), Vector3.down);
+        Ray ray4 = new Ray(transform.position + new Vector3(-0.5f, 0, -0.5f), Vector3.down);
 
-        if (Physics.Raycast(ray, 0.7f))
+        bool raycast1 = Physics.Raycast(ray1, 0.7f);
+        bool raycast2 = Physics.Raycast(ray2, 0.7f);
+        bool raycast3 = Physics.Raycast(ray3, 0.7f);
+        bool raycast4 = Physics.Raycast(ray4, 0.7f);
+
+        if (raycast1 || raycast2 || raycast3 || raycast4)
         {
             rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
