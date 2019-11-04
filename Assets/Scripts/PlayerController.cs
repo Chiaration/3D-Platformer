@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 5f;
+    
 
     private Rigidbody rig;
 
@@ -20,6 +24,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            TryJump();
+        }
     }
 
     void Awake()
@@ -45,4 +54,15 @@ public class PlayerController : MonoBehaviour
             transform.forward = facingDir;
         }
     }
+
+    void TryJump()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+
+        if (Physics.Raycast(ray, 0.7f))
+        {
+            rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+    
 }
