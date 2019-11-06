@@ -80,14 +80,19 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            SceneManager.LoadScene(1);
+            GameManager.instance.GameOver();
         }
         
         if (other.tag == "Coin")
         {
             audioSource.PlayOneShot(coinSound);
             Destroy(other.gameObject);
-            //Add Score
+            GameManager.instance.AddScore(1);
+        }
+
+        if (other.tag == "End")
+        {
+            
         }
     }
 }

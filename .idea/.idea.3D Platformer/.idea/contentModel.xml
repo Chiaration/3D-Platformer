@@ -11,6 +11,7 @@
           <e p="CameraFollow.cs" t="Include" />
           <e p="CoinController.cs" t="Include" />
           <e p="EnemyController.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
         </e>
       </e>
