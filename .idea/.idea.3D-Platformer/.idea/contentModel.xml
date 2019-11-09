@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Jun Hao Chia\Unity Project\3D-Platformer" t="IncludeRecursive">
+      <e p="3D-Platformer.sln" t="IncludeFlat" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="CameraFollow.cs" t="Include" />
+          <e p="CoinController.cs" t="Include" />
+          <e p="EnemyController.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
+          <e p="PlayerController.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+    <e p="C:\Users\Jun Hao Chia\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jun Hao Chia\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_3D-Platformer.-1138363281.00" t="ExcludeRecursive" />
+  </component>
+</project>
