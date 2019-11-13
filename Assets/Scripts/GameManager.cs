@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,8 @@ public class GameManager : MonoBehaviour
     public int score;
 
     public static GameManager instance;
-
+    [SerializeField] private TextMeshProUGUI scoreDisplay;
+    
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -21,6 +23,11 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    private void Update()
+    {
+        scoreDisplay.text = "Score: " + score.ToString();
     }
 
     public void AddScore(int scoreToGive)
