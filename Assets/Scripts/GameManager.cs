@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour
     public int score;
 
     public static GameManager instance;
-    [SerializeField] private TextMeshProUGUI scoreDisplay;
-    
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -27,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        scoreDisplay.text = "Score: " + score.ToString();
+        GameUI.instance.UpdateScoreText();
     }
 
     public void AddScore(int scoreToGive)
@@ -50,11 +49,11 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        //Win Game
+        GameUI.instance.SetEndScreen(true);
     }
 
     public void GameOver()
     {
-        //Game Over
+        GameUI.instance.SetEndScreen(false);
     }
 }

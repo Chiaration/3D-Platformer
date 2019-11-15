@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "End")
         {
-            
+            GameManager.instance.LevelEnd();
         }
     }
 }
