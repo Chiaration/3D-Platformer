@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour
 {
@@ -45,5 +46,15 @@ public class GameUI : MonoBehaviour
             endScreenHeader.text = "Game Over!";
             endScreenHeader.color = Color.red;
         }
+    }
+
+    public void OnRestartButton()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void onMenuButton()
+    {
+        SceneManager.LoadScene(0);
     }
 }
