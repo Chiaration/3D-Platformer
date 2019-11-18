@@ -34,6 +34,7 @@ public class GameUI : MonoBehaviour
 
     public void SetEndScreen(bool hasWon)
     {
+        Time.timeScale = 0f;
         endScreen.SetActive(true);
 
         endScreenScoreText.text = "<b>Score</b>\n" + GameManager.instance.score;

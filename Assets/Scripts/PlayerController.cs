@@ -25,6 +25,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.paused)
+        {
+            return;
+        }
+        
         Move();
 
         if (Input.GetButtonDown("Jump"))
