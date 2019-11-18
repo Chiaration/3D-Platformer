@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private bool paused;
+    
     public int score;
 
     public static GameManager instance;
@@ -27,6 +29,27 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         GameUI.instance.UpdateScoreText();
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            TogglePauseGame();
+        }
+    }
+
+    public void TogglePauseGame()
+    {
+        paused = !paused;
+        
+        if (paused)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+        
+        GameUI.instance.TogglePauseScreen(paused);
     }
 
     public void AddScore(int scoreToGive)
@@ -56,4 +79,5 @@ public class GameManager : MonoBehaviour
     {
         GameUI.instance.SetEndScreen(false);
     }
+    
 }
