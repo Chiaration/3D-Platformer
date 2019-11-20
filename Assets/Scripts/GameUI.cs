@@ -54,12 +54,15 @@ public class GameUI : MonoBehaviour
     public void OnRestartButton()
     {
         SceneManager.LoadScene(1);
+        GameManager.instance.ResetScore();
         Time.timeScale = 1f;
     }
 
     public void onMenuButton()
     {
         SceneManager.LoadScene(0);
+        GameManager.instance.ResetScore();
+        Time.timeScale = 1f;
     }
     
     public void TogglePauseScreen(bool paused)

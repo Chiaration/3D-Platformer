@@ -57,6 +57,11 @@ public class GameManager : MonoBehaviour
         score += scoreToGive;
     }
 
+    public void ResetScore()
+    {
+        score = 0;
+    }
+
     public void LevelEnd()
     {
         //If last level
