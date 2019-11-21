@@ -53,6 +53,11 @@ public class GameUI : MonoBehaviour
 
     public void OnRestartButton()
     {
+        if (GameManager.instance.paused)
+        {
+            GameManager.instance.TogglePauseGame();
+        }
+        
         SceneManager.LoadScene(1);
         GameManager.instance.ResetScore();
         Time.timeScale = 1f;
@@ -60,6 +65,11 @@ public class GameUI : MonoBehaviour
 
     public void onMenuButton()
     {
+        if (GameManager.instance.paused)
+        {
+            GameManager.instance.TogglePauseGame();
+        }
+        
         SceneManager.LoadScene(0);
         GameManager.instance.ResetScore();
         Time.timeScale = 1f;
