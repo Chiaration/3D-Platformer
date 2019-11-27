@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        
+        Destroy(GameObject.Find("SoundController"), 2f);
     }
 
     private void Update()
