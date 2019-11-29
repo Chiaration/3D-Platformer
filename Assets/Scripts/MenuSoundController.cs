@@ -19,15 +19,10 @@ public class MenuSoundController : MonoBehaviour
     {
         
     }
-    
-    public void StartGame()
+
+    public void ButtonClickSoundPlayer()
     {
         DontDestroyOnLoad(this.gameObject);
-        audioSource.PlayOneShot(buttonClickSound);
-    }
-
-    public void SelectLevel()
-    {
         audioSource.PlayOneShot(buttonClickSound);
     }
 }
