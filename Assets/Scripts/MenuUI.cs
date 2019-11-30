@@ -46,4 +46,9 @@ public class MenuUI : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void LoadLevel(int level)
+    {
+        SceneManager.LoadScene(level);
+    }
 }
