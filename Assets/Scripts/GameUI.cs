@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class GameUI : MonoBehaviour
     {
         
     }
+
+    [SerializeField] private GameObject restartButton;
+    [SerializeField] private GameObject nextLevelButton;
+    
 
     public TextMeshProUGUI scoreText;
     public GameObject endScreen;
@@ -41,6 +46,8 @@ public class GameUI : MonoBehaviour
 
         if (hasWon)
         {
+            nextLevelButton.SetActive(true);
+            restartButton.SetActive(false);
             endScreenHeader.text = "Great work!";
             endScreenHeader.color = Color.green;
         }
@@ -48,6 +55,8 @@ public class GameUI : MonoBehaviour
         {
             endScreenHeader.text = "Game Over!";
             endScreenHeader.color = Color.red;
+            restartButton.SetActive(true);
+            nextLevelButton.SetActive(false);
         }
     }
 
@@ -58,7 +67,7 @@ public class GameUI : MonoBehaviour
             GameManager.instance.TogglePauseGame();
         }
         
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         GameManager.instance.ResetScore();
         Time.timeScale = 1f;
     }
@@ -83,5 +92,12 @@ public class GameUI : MonoBehaviour
     public void OnResumeButton()
     {
         GameManager.instance.TogglePauseGame();
+    }
+
+    public void NextLevelButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.instance.ResetScore();
+        Time.timeScale = 1f;
     }
 }

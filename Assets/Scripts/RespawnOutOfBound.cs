@@ -21,8 +21,7 @@ public class RespawnOutOfBound : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Vector3 respawnPos = new Vector3(0, 0.63f, 0);
-            other.transform.position = respawnPos;
+            GameManager.instance.GameOver();
         }
     }
 }

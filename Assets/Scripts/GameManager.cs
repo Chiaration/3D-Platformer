@@ -66,15 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelEnd()
     {
-        //If last level
-        if (SceneManager.sceneCountInBuildSettings == SceneManager.GetActiveScene().buildIndex + 1)
-        {
-            WinGame();
-        }
-        else
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        WinGame();
     }
 
     public void WinGame()
