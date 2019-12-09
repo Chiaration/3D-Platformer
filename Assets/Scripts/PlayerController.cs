@@ -69,13 +69,15 @@ public class PlayerController : MonoBehaviour
         Ray ray2 = new Ray(transform.position + new Vector3(-0.5f, 0, 0.5f), Vector3.down);
         Ray ray3 = new Ray(transform.position + new Vector3(0.5f, 0, -0.5f), Vector3.down);
         Ray ray4 = new Ray(transform.position + new Vector3(-0.5f, 0, -0.5f), Vector3.down);
+        Ray ray5 = new Ray(transform.position + new Vector3(0f, 0, 0f), Vector3.down);
 
         bool raycast1 = Physics.Raycast(ray1, 0.7f);
         bool raycast2 = Physics.Raycast(ray2, 0.7f);
         bool raycast3 = Physics.Raycast(ray3, 0.7f);
         bool raycast4 = Physics.Raycast(ray4, 0.7f);
+        bool raycast5 = Physics.Raycast(ray5, 1f);
 
-        if (raycast1 || raycast2 || raycast3 || raycast4)
+        if (raycast1 || raycast2 || raycast3 || raycast4 || raycast5)
         {
             rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
