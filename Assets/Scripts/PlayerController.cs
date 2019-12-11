@@ -11,10 +11,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private AudioClip coinSound;
-    
+
+
 
     private Rigidbody rig;
     private AudioSource audioSource;
+
+    private bool isGrounded;
     
     // Start is called before the first frame update
     void Start()
@@ -35,6 +38,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             TryJump();
+        }
+        
+        if (rig.velocity.y >= 5f)
+        {
+            rig.velocity = Vector3.zero;
+            rig.AddForce(Vector3.up * jumpForce);
         }
     }
 
@@ -57,11 +66,10 @@ public class PlayerController : MonoBehaviour
         
         Vector3 facingDir = new Vector3(xInput, 0, zInput);
 
-        if (facingDir.magnitude > 0)
-        {
+        if (facingDir.magnitude > 0)  {
             transform.forward = facingDir;
         }
-    }
+}
 
     void TryJump()
     {
@@ -75,11 +83,16 @@ public class PlayerController : MonoBehaviour
         bool raycast2 = Physics.Raycast(ray2, 0.7f);
         bool raycast3 = Physics.Raycast(ray3, 0.7f);
         bool raycast4 = Physics.Raycast(ray4, 0.7f);
-        bool raycast5 = Physics.Raycast(ray5, 1f);
+        bool raycast5 = Physics.Raycast(ray5, 0.5f);
 
         if (raycast1 || raycast2 || raycast3 || raycast4 || raycast5)
         {
-            rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            if (isGrounded)
+            { 
+               rig.velocity = Vector3.zero;
+               rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+               isGrounded = false;
+            }
         }
     }
 
@@ -101,5 +114,10 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.instance.LevelEnd();
         }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        isGrounded = true;
     }
 }
